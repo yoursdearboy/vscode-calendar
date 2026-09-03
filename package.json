@@ -1,0 +1,87 @@
+{
+  "name": "positron-daily-calendar",
+  "displayName": "Daily Calendar",
+  "description": "A calendar in the Explorer that creates and opens daily notes.",
+  "version": "0.0.2",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:dailyCalendar.calendar",
+    "onCommand:dailyCalendar.createDailyNote",
+    "onCommand:dailyCalendar.previousMonth",
+    "onCommand:dailyCalendar.nextMonth",
+    "onCommand:dailyCalendar.goToToday"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "dailyCalendar.calendar",
+          "name": "Calendar",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "dailyCalendar.createDailyNote",
+        "title": "Calendar: Create Daily Note"
+      },
+      {
+        "command": "dailyCalendar.previousMonth",
+        "title": "Calendar: Previous Month",
+        "icon": "$(chevron-left)"
+      },
+      {
+        "command": "dailyCalendar.nextMonth",
+        "title": "Calendar: Next Month",
+        "icon": "$(chevron-right)"
+      },
+      {
+        "command": "dailyCalendar.goToToday",
+        "title": "Calendar: Go to Today",
+        "icon": "$(calendar)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "dailyCalendar.previousMonth",
+          "when": "view == dailyCalendar.calendar",
+          "group": "navigation@1"
+        },
+        {
+          "command": "dailyCalendar.goToToday",
+          "when": "view == dailyCalendar.calendar",
+          "group": "navigation@2"
+        },
+        {
+          "command": "dailyCalendar.nextMonth",
+          "when": "view == dailyCalendar.calendar",
+          "group": "navigation@3"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Daily Calendar",
+      "properties": {
+        "dailyCalendar.notesFolder": {
+          "type": "string",
+          "default": "",
+          "description": "Folder, relative to the workspace root, where daily notes are stored. Leave empty to use the workspace root."
+        },
+        "dailyCalendar.noteTemplate": {
+          "type": "string",
+          "default": "# ${date}\n\n",
+          "description": "Initial content for a new note. ${date} is replaced with yyyy-mm-dd."
+        }
+      }
+    }
+  }
+}
