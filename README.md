@@ -4,6 +4,8 @@ Adds a clickable **Calendar** section to the Explorer. Click a day and the exten
 
 Use the arrows in the view title to change months. The calendar button returns to the current month.
 
+Download [vsix file](https://github.com/yoursdearboy/vscode-calendar/releases/download/0.0.2/positron-daily-calendar-0.0.2.vsix) and install using Extensions pane.
+
 ## Settings
 
 - `dailyCalendar.notesFolder` — workspace-relative destination folder (default: workspace root; leave empty)
